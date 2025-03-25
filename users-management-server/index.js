@@ -24,7 +24,13 @@ app.use(cookieParser());
 //         credentials: true,
 //     })
 // );
-app.use(cors({ origin: process.env.ORIGIN || "https://user-management-client-seven.vercel.app", credentials: true }));
+app.use(
+    cors({
+        origin: "https://user-management-client-liard.vercel.app",
+        credentials: true,
+    })
+);
+
 
 // MongoDB connection URI
 const dbUrl = `mongodb+srv://${process.env.DB_USER_NAME}:${process.env.DB_USER_PASS}@cluster0.fgf3l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
