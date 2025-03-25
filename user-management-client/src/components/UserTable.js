@@ -12,8 +12,8 @@ const UserTable = ({ isAuthenticated }) => {
     useEffect(() => {
         if (isAuthenticated) {
 
-            const API_URL = process.env.VERCEL_APP_URL;
-            axios.get(`${API_URL}/api/users`, { withCredentials: true })
+            // const API_URL = process.env.VERCEL_APP_URL;
+            axios.get('https://user-management-server-one-sigma.vercel.app/api/users', { withCredentials: true })
 
                 // axios.get("http://localhost:8000/api/users", { withCredentials: true })
                 // axios.post((`${process.env.VERCEL_APP_URL}/api/users`), { withCredentials: true })
@@ -66,8 +66,8 @@ const UserTable = ({ isAuthenticated }) => {
 
         try {
 
-            const API_URL = process.env.VERCEL_APP_URL;
-            let url = `${API_URL}/api/users`;
+            // const API_URL = process.env.VERCEL_APP_URL;
+            let url = `https://user-management-server-one-sigma.vercel.app/api/users`;
             // let url = `${process.env.VERCEL_APP_URL}/api/users`;
             let method = "PUT";
 
