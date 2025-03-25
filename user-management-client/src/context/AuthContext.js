@@ -10,7 +10,10 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/api/users/me", { withCredentials: true });
+
+                const API_URL = process.env.VERCEL_APP_URL;
+                const res = await axios.get(`${API_URL}/api/users/me`, { withCredentials: true });
+                // const res = await axios.get("https://users-management-server-nh6yhtge1-kamran99-s-projects.vercel.app/api/users/me", { withCredentials: true });
                 setUser(res.data.user);
                 setIsAuthenticated(true);
             } catch (error) {
@@ -23,7 +26,10 @@ const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const res = await axios.post("http://localhost:8000/api/auth/login", { email, password }, { withCredentials: true });
+
+            // const res = await axios.get(`${API_URL}/api/auth/login`, { withCredentials: true });
+            const API_URL = process.env.VERCEL_APP_URL;
+            const res = await axios.get(`${API_URL}/api/auth/login`, { email, password }, { withCredentials: true });
             setUser(res.data.user);
             setIsAuthenticated(true);
             return { success: true, message: res.data.message };
@@ -35,7 +41,12 @@ const AuthProvider = ({ children }) => {
     const logout = async () => {
         setLoading(true);
         try {
-            await axios.post("http://localhost:8000/api/auth/logout", {}, { withCredentials: true });
+
+            const API_URL = process.env.VERCEL_APP_URL;
+            await axios.get(`${API_URL}/api/auth/logout`, {}, { withCredentials: true });
+
+            // await axios.post("http://localhost:8000/api/auth/logout", {}, { withCredentials: true });
+
             setUser(null);
             setIsAuthenticated(false);
         } catch (error) {
