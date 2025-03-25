@@ -1,0 +1,24 @@
+.register-form{
+    margin-top: 20px;
+}
+@media (max-width: 768px) {
+    /* .register-form{
+        margin-top: 170px;
+    } */
+    .moving-image {
+        max-width: 70%; 
+    }
+}
+
+@media (max-width: 576px) {
+    .moving-image {
+        max-width: 60%; 
+    }
+    motion-image{
+        margin-top: 80px;
+    }
+
+    .register-form{
+        margin-top: 100px;
+    }
+}

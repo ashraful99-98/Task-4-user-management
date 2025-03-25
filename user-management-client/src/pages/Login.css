@@ -1,0 +1,50 @@
+.login-section {
+  background: #f8f9fa;
+  padding: 20px;
+}
+
+.login-card {
+  max-width: 420px;
+  width: 100%;
+}
+.image-field{
+  margin-top: 60px;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field .eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.moving-image {
+  max-width: 80%;
+  transition: transform 0.4s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .image-field{
+    margin-top: 30px;
+  }
+  .moving-image {
+      max-width: 60%;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .image-field{
+    margin-top: 20px;
+  }
+  .moving-image {
+      max-width: 50%;
+  }
+}
