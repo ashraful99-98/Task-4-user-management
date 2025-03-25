@@ -21,7 +21,7 @@ const Register = () => {
 
             // const API_URL = process.env.VERCEL_APP_URL;
             // await axios.post(`${API_URL}/api/auth/register`, { name, email, password });
-            await axios.post('https://user-management-server-one-sigma.vercel.app/api/auth/register', { name, email, password });
+            await axios.post('https://user-management-server-liard.vercel.app/api/auth/register', { name, email, password });
 
             // const response = await axios.post("http://localhost:8000/api/auth/register", {
             //     name,
@@ -128,8 +128,6 @@ const Register = () => {
                 </Col>
             </Row>
         </Container>
-
-
     );
 };
 export default Register;

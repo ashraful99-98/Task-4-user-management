@@ -24,12 +24,23 @@ app.use(cookieParser());
 //         credentials: true,
 //     })
 // );
+
+// app.use(
+//     cors({
+//         origin: "https://user-management-client-seven.vercel.app",
+//         credentials: true,
+//     })
+// );
+
+
 app.use(
     cors({
-        origin: "https://user-management-client-liard.vercel.app",
-        credentials: true,
+        origin: "https://user-management-client-seven.vercel.app", // Allow frontend requests
+        methods: "GET,POST,PUT,DELETE",
+        credentials: true, // Allow cookies and authentication headers
     })
 );
+
 
 
 // MongoDB connection URI
@@ -47,8 +58,6 @@ async function run() {
         console.log(error.message);
         setTimeout(connectDB, 5000);
         // setTimeout(run, 5000);
-
-        // Retry connection after 5 seconds
     }
 };
 
