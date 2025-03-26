@@ -1,18 +1,34 @@
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
 
-module.exports = (req, res, next) => {
-    const token = req.cookies.token;
-    if (!token) return res.status(401).json({ message: "Unauthorized" });
+// module.exports = (req, res, next) => {
+//     const token = req.cookies.token;
+//     if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+//     try {
+//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//         req.user = decoded;
+//         next();
+//     } catch {
+//         res.status(401).json({ message: "Invalid token" });
+//     }
+// };
+
+const jwt = require('jsonwebtoken');
+
+module.exports = function (req, res, next) {
+    const token = req.header('Authorization')?.split(' ')[1]; // Extract token from header
+    if (!token) return res.status(401).json({ message: 'Access Denied. No token provided.' });
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = verified;
         next();
-    } catch {
-        res.status(401).json({ message: "Invalid token" });
+    } catch (err) {
+        res.status(401).json({ message: 'Invalid Token' });
     }
 };
+
 
 
 
