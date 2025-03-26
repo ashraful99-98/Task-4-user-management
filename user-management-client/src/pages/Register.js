@@ -19,11 +19,13 @@ const Register = () => {
         e.preventDefault();
         try {
             // const response = await axios.post("http://localhost:8000/api/auth/register",
-            const response = await axios.post("https://user-management-server-liard.vercel.app/api/auth/register", {
-                name,
-                email,
-                password
-            });
+
+            const API_BASE_URL = "https://user-management-server-liard.vercel.app"; // Backend URL
+
+            const response = await axios.post(`${API_BASE_URL}/api/auth/register`, {
+                name, email, password
+            }, { withCredentials: true });
+
 
             setMessage({ type: "success", text: "Registration successful! Redirecting to login..." });
 

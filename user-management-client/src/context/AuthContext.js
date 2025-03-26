@@ -11,7 +11,9 @@ const AuthProvider = ({ children }) => {
         const fetchUser = async () => {
             try {
                 // const res = await axios.get("http://localhost:8000/api/users/me",
-                const res = await axios.get("https://user-management-server-liard.vercel.app/api/users/me",
+                const API_BASE_URL = "https://user-management-server-liard.vercel.app";
+                const res = await axios.get(`${API_BASE_URL}/api/users/me`,
+                    // const res = await axios.get("https://user-management-server-liard.vercel.app/api/users/me",
                     { withCredentials: true });
                 setUser(res.data.user);
                 setIsAuthenticated(true);
@@ -26,7 +28,8 @@ const AuthProvider = ({ children }) => {
     const login = async (email, password) => {
         try {
             // const res = await axios.post("http://localhost:8000/api/auth/login", 
-            const res = await axios.post("https://user-management-server-liard.vercel.app/api/auth/login", { email, password }, { withCredentials: true });
+            const API_BASE_URL = "https://user-management-server-liard.vercel.app";
+            const res = await axios.post(`${API_BASE_URL}/api/auth/login`, { email, password }, { withCredentials: true });
             setUser(res.data.user);
             setIsAuthenticated(true);
             return { success: true, message: res.data.message };
@@ -39,7 +42,8 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         try {
             // await axios.post("http://localhost:8000/api/auth/logout", {}, 
-            await axios.post("https://user-management-server-liard.vercel.app/api/auth/logout", {}, { withCredentials: true });
+            const API_BASE_URL = "https://user-management-server-liard.vercel.app";
+            await axios.post(`${API_BASE_URL}/api/auth/logout`, {}, { withCredentials: true });
             setUser(null);
             setIsAuthenticated(false);
         } catch (error) {
