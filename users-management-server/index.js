@@ -27,14 +27,19 @@ app.use(cookieParser());
 
 const cors = require("cors");
 
-app.use(
-    cors({
-        origin: process.env.ORIGIN || "https://user-management-client-eight.vercel.app",
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        credentials: true, // Allows cookies to be sent
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-);
+// app.use(
+//     cors({
+//         origin: process.env.ORIGIN || "https://user-management-client-eight.vercel.app",
+//         methods: ["GET", "POST", "PUT", "DELETE"],
+//         credentials: true, // Allows cookies to be sent
+//         allowedHeaders: ["Content-Type", "Authorization"],
+//     })
+// );
+
+app.use(cors({
+    origin: ['https://user-management-client-eight.vercel.app'], // Replace with your frontend URL
+    credentials: true
+}));
 
 
 // MongoDB connection URI
