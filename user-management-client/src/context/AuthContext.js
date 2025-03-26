@@ -65,10 +65,13 @@ const AuthProvider = ({ children }) => {
             const API_BASE_URL = "https://user-management-server-liard.vercel.app";
             const res = await axios.post(`${API_BASE_URL}/api/auth/login`,
                 { email, password },
-                { withCredentials: true } // Send cookies
+                { withCredentials: true } // Required for cookies!
             );
 
-            localStorage.setItem("token", res.data.token); // Store token after login
+            if (res.data.token) {
+                localStorage.setItem("token", res.data.token); // Store token
+            }
+
             setUser(res.data.user);
             setIsAuthenticated(true);
             return { success: true, message: res.data.message };
@@ -76,6 +79,7 @@ const AuthProvider = ({ children }) => {
             return { success: false, message: error.response?.data?.message || "Login failed" };
         }
     };
+
 
 
     // const logout = async () => {
@@ -92,14 +96,13 @@ const AuthProvider = ({ children }) => {
     //         setLoading(false);
     //     }
     // };
-
     const logout = async () => {
         setLoading(true);
         try {
             const API_BASE_URL = "https://user-management-server-liard.vercel.app";
             await axios.post(`${API_BASE_URL}/api/auth/logout`, {}, { withCredentials: true });
 
-            localStorage.removeItem("token"); // Remove token after logout
+            localStorage.removeItem("token"); // Remove token on logout
             setUser(null);
             setIsAuthenticated(false);
         } catch (error) {
@@ -108,6 +111,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
         }
     };
+
 
 
     return (
