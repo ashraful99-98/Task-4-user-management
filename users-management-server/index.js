@@ -29,7 +29,7 @@ const cors = require("cors");
 
 app.use(
     cors({
-        origin: process.env.ORIGIN || "https://user-management-client-kappa.vercel.app",
+        origin: process.env.ORIGIN || "https://user-management-client-eight.vercel.app",
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true, // Allows cookies to be sent
         allowedHeaders: ["Content-Type", "Authorization"],
